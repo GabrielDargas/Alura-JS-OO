@@ -5,11 +5,18 @@ class cliente {
 
 class contaCorrente {
     agencia;
-    saldo;
-
+    //a convenção usa atualmente _saldo. Porém está rolando uma discussão para se tornar #
+    #saldo = 0;
     sacar(valor) {
-        if (this.saldo > valor) {
-            this.saldo -= valor
+        if (this.#saldo > valor) {
+            this.#saldo -= valor
+            console.log(this.#saldo)
+        }
+    }
+    depositar(valor){
+        if(valor > 0){ 
+            this.#saldo += valor
+            console.log(this.#saldo)
         }
     }
 }
@@ -22,14 +29,9 @@ class contaCorrente {
     cliente2.cpf = 88833366609
 
     const contaCorrenteRicardo = new contaCorrente()
-    contaCorrenteRicardo.saldo = 0
     contaCorrenteRicardo.agencia = 1001
-    console.log(contaCorrenteRicardo.saldo)
-
-    contaCorrenteRicardo.saldo += 100
+ 
+    contaCorrenteRicardo.depositar(100)
     contaCorrenteRicardo.sacar(50)
 
-
-
-    console.log(contaCorrenteRicardo.saldo)
-    console.log(cliente1, cliente2)
+    console.log(contaCorrenteRicardo)
