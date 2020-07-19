@@ -1,10 +1,24 @@
+import {Cliente} from  "./Cliente.js"
+
 export class contaCorrente {
     agencia;
-    cliente;
+    _cliente;
 
+    set cliente (novoValor) {
+        if (novoValor instanceof Cliente) {
+            this._cliente = novoValor
+        }
+    }
+
+    get cliente(){
+        return this._cliente
+    }
     //a convenção usa atualmente _saldo. Porém está rolando uma discussão para se tornar #
     _saldo = 0;
-    
+
+    get saldo(){
+        return this._saldo
+    }
 
     sacar(valor) {
         if (this._saldo > valor) {
@@ -19,7 +33,7 @@ export class contaCorrente {
         this._saldo += valor
     }
 
-    transferir(valor, conta){
+    transferir(valor, conta) {
         const valorSacado = this.sacar(valor)
         conta.depositar(valorSacado)
     }
