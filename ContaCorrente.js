@@ -1,10 +1,14 @@
 export class contaCorrente {
     agencia;
+    cliente;
+
     //a convenção usa atualmente _saldo. Porém está rolando uma discussão para se tornar #
-    #saldo = 0;
+    _saldo = 0;
+    
+
     sacar(valor) {
-        if (this.#saldo > valor) {
-            this.#saldo -= valor
+        if (this._saldo > valor) {
+            this._saldo -= valor
             return valor
         }
     }
@@ -12,7 +16,12 @@ export class contaCorrente {
         if (valor <= 0) {
             return
         }
-        this.#saldo += valor
-
+        this._saldo += valor
     }
+
+    transferir(valor, conta){
+        const valorSacado = this.sacar(valor)
+        conta.depositar(valorSacado)
+    }
+
 }
