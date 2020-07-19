@@ -9,3 +9,6 @@ const conta2 = new contaCorrente(cliente2, 1002)
 
 contaCorrenteRicardo.depositar(500)
 contaCorrenteRicardo.transferir(200, conta2)
+
+console.log(contaCorrenteRicardo)
+console.log(contaCorrente.numeroContas)
