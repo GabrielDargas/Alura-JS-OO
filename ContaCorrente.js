@@ -2,8 +2,7 @@ import {Cliente} from  "./Cliente.js"
 
 export class contaCorrente {
     static numeroContas = 0 
-    agencia;
-    _cliente;
+
 
     set cliente (novoValor) {
         if (novoValor instanceof Cliente) {
@@ -15,7 +14,6 @@ export class contaCorrente {
         return this._cliente
     }
     //a convenção usa atualmente _saldo. Porém está rolando uma discussão para se tornar #
-    _saldo = 0;
 
     get saldo(){
         return this._saldo
@@ -25,6 +23,7 @@ export class contaCorrente {
         this.agencia = agencia
         this.cliente = cliente
         contaCorrente.numeroContas += 1
+        this._saldo = 0;
     }
 
     sacar(valor) {
